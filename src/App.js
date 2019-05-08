@@ -14,9 +14,9 @@ import {
 import Avatar from "./Avatar";
 
 
-const CLIENT_ID =  "03174074e722b75cc3b5";//  process.env.OAUTH_CLIENT_ID;
-const REDIRECT_URI ="http://localhost:3000/"// process.env.REDIRECT_URI;
-const AUTH_API_URI = "https://gitstar2.herokuapp.com/authenticate/"// process.env.AUTH_API_URI;
+const CLIENT_ID =    "03174074e722b75cc3b5" //process.env.CLIENT_ID
+const REDIRECT_URI = "http://localhost:3000" //process.env.REDIRECT_URI;
+const AUTH_API_URI = "https://gitstar2.herokuapp.com/authenticate/" // process.env.AUTH_API_URI;
 
 //apollo client
 const client = new ApolloClient({
@@ -48,22 +48,22 @@ class App extends Component {
       return;
     }
     const code =
-      window.location.href.match(/\?code=(.*)/) &&
-      window.location.href.match(/\?code=(.*)/)[1];
-    if (code) {
-      this.setState({ status: STATUS.LOADING });
-      fetch(`${AUTH_API_URI}${code}`)
-        .then(response => response.json())
-        .then(({ token }) => {
-          if (token) {
+    window.location.href.match(/\?code=(.*)/) &&
+    window.location.href.match(/\?code=(.*)/)[1];
+  if (code) {
+    this.setState({ status: STATUS.LOADING });
+    fetch(`${AUTH_API_URI}${code}`)
+      .then(response => response.json())
+      .then(({ token }) => {
+        if (token) {
           localStorage.setItem("github_token", token);
-          }
-          this.setState({
-            status: STATUS.FINISHED_LOADING
-          });
+        }
+        this.setState({
+          status: STATUS.FINISHED_LOADING
         });
-    }
-  } //componentdidmount ends here!!
+      });
+  }
+}//componentdidmount ends here!!
 
   render() {
     return (
