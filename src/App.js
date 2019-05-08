@@ -15,7 +15,7 @@ import Avatar from "./Avatar";
 
 
 const CLIENT_ID =    "03174074e722b75cc3b5" //process.env.CLIENT_ID
-const REDIRECT_URI = "http://localhost:3000" //process.env.REDIRECT_URI;
+const REDIRECT_URI = "http://localhost:3000/" //process.env.REDIRECT_URI;
 const AUTH_API_URI = "https://gitstar2.herokuapp.com/authenticate/" // process.env.AUTH_API_URI;
 
 //apollo client
